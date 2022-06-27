@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-
 root to:'public/homes#top'
 
   scope module: :public do
-    resources :users, only:[:index, :show, :edit]
+    get 'current_users/index' => "users#index"
+    get 'current_users/show' => "users#show"
+    get 'current_users/edit' => "users#edit"
+    patch 'current_users/edit' => "users#update"
+
   end
 
   devise_for :users,skip: [:passwords], controllers: {
