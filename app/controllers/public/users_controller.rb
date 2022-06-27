@@ -9,13 +9,21 @@ class Public::UsersController < ApplicationController
   def edit
     @user = current_user
   end
-  
-  def withdrawalcon
+
+  def confirm
+  end
+
+  def withdraw
+    @user = current_user
+    @user.update(withdrawal_status: true)
+    reset_session
+    redirect_to root_path
+  end
 
   def update
     @user = current_user
     @user.update(user_params)
-    redirect_to current_users_show_path(@user)
+    redirect_to user_path(@user)
   end
 
   private

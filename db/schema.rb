@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2022_06_26_112626) do
     t.text "self_introduction"
     t.integer "gender"
     t.boolean "publication_status"
-    t.boolean "withdrawal_status"
+    t.boolean "withdrawal_status", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

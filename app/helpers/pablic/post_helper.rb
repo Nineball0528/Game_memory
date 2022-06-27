@@ -1,0 +1,2 @@
+module Pablic::PostHelper
+end

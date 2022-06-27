@@ -1,9 +1,19 @@
 <h2>プロフィール編集</h2>
 
-  <%= form_with model:@user, method: :patch, url: current_users_edit_path(@user), local:true do |f| %>
+  <%= form_with model:@user, local:true do |f| %>
   <label for="inputName">Name</label>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
   <label for="inputImage">ProfileImage</label>
   <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+
+  <td><%= f.label :公開設定 %></td>
+    <td>
+     <%= f.radio_button :publication_status, true, checked: true %>
+     <%= f.label :publication_status, "公開", value: true %>
+     <%= f.radio_button :publication_status, false %>
+     <%= f.label :publication_status, "非公開", value: false %>
+    </td>
+
+    <%= link_to "退会する", users_confirm_path, class:"btn btn-danger w-120px ml-220px" %>
   <%= f.submit "変更を保存" %>
 <% end %>

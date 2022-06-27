@@ -28,6 +28,11 @@ class Public::SessionsController < Devise::SessionsController
   private
 
   def after_sign_in_path_for(resource)
-    root_path
+    if resource.withdrawal_status == true
+       reset_session
+       new_user_session_path
+    else
+       root_path
+    end
   end
 end
