@@ -15,6 +15,14 @@ class Public::PostController < ApplicationController
     @post = Post.all
   end
 
+  def search
+    if params[:title].present?
+      @post = Post.where('title LIKE ?', "%#{params[:title]}%")
+    else
+      @post = Post.none
+    end
+  end
+
   def edit
     @post = Post.find(params[:id])
   end

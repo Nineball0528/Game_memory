@@ -13,8 +13,13 @@ scope module: :public do
 
     get 'users/confirm' => "users#confirm"
     patch 'users/withdraw' => 'users#withdraw'
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+        resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+    end
     resources :post, only:[:index, :show, :edit, :new, :create ,:destroy, :update] do
+     get :search, on: :collection
     resources :post_comments, only: [:create]
     resource :favorites, only: [:create, :destroy]
   end
