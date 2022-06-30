@@ -1,13 +1,1 @@
-
-
-<% @post.each do |post| %>
-<div>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image %>
-  <% end %>
-  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
-  <p>タイトル：<%= post.title %></p>
-  <p>紹介文：<%= post.introduction %></p>
-  <p>ユーザーネーム：<%= post.user.name %></p>
-</div>
-<% end %>
+<%= render 'post', post: @post %>
