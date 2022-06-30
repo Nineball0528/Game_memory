@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 root to:'public/homes#top'
 
 
@@ -24,13 +26,6 @@ scope module: :public do
     resource :favorites, only: [:create, :destroy]
   end
   end
-
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
-
- get '/admin' => 'admin/homes#top'
-
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
