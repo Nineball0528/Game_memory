@@ -12,7 +12,8 @@ root to:'public/homes#top'
 }
 
 scope module: :public do
-
+    
+    get '/about' => "homes#about", as: 'about'
     get 'users/confirm' => "users#confirm"
     patch 'users/withdraw' => 'users#withdraw'
     resources :users, only: [:index, :show, :edit, :update] do
@@ -20,6 +21,7 @@ scope module: :public do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
     end
+
     resources :post, only:[:index, :show, :edit, :new, :create ,:destroy, :update] do
      get :search, on: :collection
     resources :post_comments, only: [:create]

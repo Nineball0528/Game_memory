@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :encrypted_password, :self_introduction ,:gender ,:publication_status, :withdrawal_status)
+    params.require(:user).permit(:name, :email, :encrypted_password, :self_introduction ,:gender ,:publication_status, :withdrawal_status, :profile_image)
   end
 
 end

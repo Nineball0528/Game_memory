@@ -1,19 +1,44 @@
-<h2>プロフィール編集</h2>
-
-  <%= form_with model:@user, local:true do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-  <label for="inputImage">ProfileImage</label>
-  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-
-  <td><%= f.label :公開設定 %></td>
+ <div class="row">
+ <h4><div class="public-title p-3">プロフィール編集</div></h4>
+</div>
+<div class="row">
+ <div class="col-8">
+  <%= form_with model: @user, method: :patch, url: user_path(@user), local:true do |f| %>
+  <table class="table table-borderless">
+   <tbody>
+    <tr>
+      <td><%= image_tag @user.get_profile_image(100,100), class:"rounded-circle"; %></td>
+      <td><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  </td>
+    </tr>
+    <tr>
+     <td>ユーザー名</td>
+     <td>
+      <%= f.text_field :name %>
+     </td>
+    </tr>
+    <tr>
+     <td>自己紹介</td>
+     <td><%= f.text_field :self_introduction %></td>
+    </tr>
+    <tr>
+     <td>メールアドレス</td>
+     <td><%= f.email_field :email %></td>
+    </tr>
+    <tr>
+     <td><%= f.label :公開設定 %></td>
     <td>
      <%= f.radio_button :publication_status, true, checked: true %>
      <%= f.label :publication_status, "公開", value: true %>
      <%= f.radio_button :publication_status, false %>
      <%= f.label :publication_status, "非公開", value: false %>
     </td>
-
-    <%= link_to "退会する", users_confirm_path, class:"btn btn-danger w-120px ml-220px" %>
-  <%= f.submit "変更を保存" %>
-<% end %>
+    </tr>
+   </tbody>
+  </table>
+ </div>
+</div>
+<div class="row p-3">
+ <%= f.submit "編集内容を保存", class:"btn btn-success w-160px ml-210px" %>
+ <% end %>
+ <%= link_to "退会する", users_confirm_path, class:"btn btn-danger w-120px ml-220px" %>
+</div>
