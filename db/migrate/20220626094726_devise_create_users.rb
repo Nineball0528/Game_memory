@@ -34,7 +34,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       t.string :name
       t.text :self_introduction
-      t.integer :gender
       t.boolean :publication_status
       t.boolean :withdrawal_status, default: false ,null: true
 
