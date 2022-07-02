@@ -59,3 +59,6 @@ gem 'activeadmin'
 gem 'devise'
 gem 'rails-i18n'
 gem "enum_help"
+
+gem 'acts-as-taggable-on', '~> 9.0'
+

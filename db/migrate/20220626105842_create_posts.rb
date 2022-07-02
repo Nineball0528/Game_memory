@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :post_comment_id
       t.integer :good_id
       t.string :title
-      t.text :introduction
+      t.text :body
       t.boolean :active_status
 
       t.timestamps

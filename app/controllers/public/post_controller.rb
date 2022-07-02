@@ -8,11 +8,12 @@ class Public::PostController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to post_index_path
+      redirect_to post_path(@post)
     else
       render :new
     end
   end
+
 
   def index
     @post = Post.all
@@ -51,7 +52,7 @@ class Public::PostController < ApplicationController
  private
 
  def post_params
-   params.require(:post).permit(:user_id, :post_comment_id, :image, :good_id, :title, :introduction, :active_status)
+   params.require(:post).permit(:user_id, :post_comment_id, :image, :good_id, :title, :body, :active_status, :tag_list)
  end
 
 end
