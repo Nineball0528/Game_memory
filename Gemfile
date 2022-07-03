@@ -63,3 +63,5 @@ gem "enum_help"
 
 gem 'acts-as-taggable-on', '~> 9.0'
 
+gem 'image_processing', '~> 1.2'
+
