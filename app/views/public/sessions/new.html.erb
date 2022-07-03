@@ -7,6 +7,8 @@
 
 
 <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+<p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 <div class="row">
   <div class="col-6 offset-1">
     <table class="table table-borderless">
@@ -15,18 +17,8 @@
           <td>メールアドレス</td>
           <td> <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス", class:"col-12" %></td>
         </tr>
-        <tr>
-        <td>ユーザー名</td>
-          <td>
-             <%= f.text_field :name, placeholder:"ユーザー名", class:"ml-5" %>
-          </td>
-        <tr>
           <td>パスワード</td>
           <td> <%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" , class:"col-12" %></td>
-        </tr>
-        <tr>
-          <td>パスワード（確認用）</td>
-          <td> <%= f.password_field :password_confirmation, autocomplete: "パスワード", class:"ml-5" %></td>
         </tr>
         <tr>
         <tr>

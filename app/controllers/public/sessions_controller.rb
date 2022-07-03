@@ -4,17 +4,14 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-   def new
-     super
-     #byebug
-   end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
-   def create
-    #byebug
-     super
-     #byebug
-   end
+  # def create
+  #   super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -31,7 +28,6 @@ class Public::SessionsController < Devise::SessionsController
   private
 
   def after_sign_in_path_for(resource)
-    pp "session", resource
     if resource.withdrawal_status == true
        reset_session
        new_user_session_path
