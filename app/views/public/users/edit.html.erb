@@ -17,22 +17,12 @@
      </td>
     </tr>
     <tr>
-     <td>自己紹介</td>
-     <td><%= f.text_field :self_introduction %></td>
-    </tr>
-    <tr>
      <td>メールアドレス</td>
      <td><%= f.email_field :email %></td>
     </tr>
     <tr>
-     <td><%= f.label :公開設定 %></td>
-    <td>
-     <%= f.radio_button :publication_status, true, checked: true %>
-     <%= f.label :publication_status, "公開", value: true %>
-     <%= f.radio_button :publication_status, false %>
-     <%= f.label :publication_status, "非公開", value: false %>
-    </td>
-    </tr>
+     <td>自己紹介</td>
+     <td><%= f.text_area :self_introduction, rows: '5', style: "width:100%" %></td>
    </tbody>
   </table>
  </div>

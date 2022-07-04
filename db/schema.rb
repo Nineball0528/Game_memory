@@ -138,7 +138,6 @@ ActiveRecord::Schema.define(version: 2022_07_02_063706) do
     t.datetime "remember_created_at"
     t.string "name"
     t.text "self_introduction"
-    t.boolean "publication_status"
     t.boolean "withdrawal_status", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

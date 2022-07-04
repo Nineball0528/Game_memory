@@ -10,8 +10,8 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
         <%= form_with url: search_post_index_path, method: :get, local: true, class:"form-inline my-2 my-lg-0" do |f| %>
-        <%= f.text_field :title, {:class => "form-control mr-sm-2"} %>
-        <%= f.submit :search, {:class => "btn btn-outline-success my-2 my-sm-0"} %>
+        <%= f.text_field :title, class: "form-control mr-sm-2", placeholder: "作品を検索"  %>
+        <%= f.submit :search, class: "btn btn-outline-success my-2 my-sm-0 " %>
         <% end %>
 
         <ul class="navbar-nav ml-auto">

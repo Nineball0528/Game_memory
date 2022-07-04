@@ -4,6 +4,12 @@ class Post < ApplicationRecord
   acts_as_taggable_on :tags
   belongs_to :user
 
+  validates :image, presence: true
+  validates :title, presence: true
+  validates :body, presence: true
+
+
+
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 

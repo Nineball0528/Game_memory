@@ -12,7 +12,7 @@ root to:'public/homes#top'
 }
 
 scope module: :public do
-    
+
     get '/about' => "homes#about", as: 'about'
     get 'users/confirm' => "users#confirm"
     patch 'users/withdraw' => 'users#withdraw'
@@ -24,7 +24,7 @@ scope module: :public do
 
     resources :post, only:[:index, :show, :edit, :new, :create ,:destroy, :update] do
      get :search, on: :collection
-    resources :post_comments, only: [:create]
+    resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
   end
