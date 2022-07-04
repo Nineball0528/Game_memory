@@ -16,9 +16,24 @@
        <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
       <% end %>
     </p>
+    <%= render 'tag_list', tag_list: post.tag_list %>
     <span><i class="fas fa-user"></i> By <%= post.user.name %> ｜ </span>
-    <span><%= render 'tag_list', tag_list: post.tag_list %></span>
     <span><%= link_to "#{post.post_comments.count} コメント", post_path(post.id), class:"text-dark" %></span>
+    <span>
+     <% if @post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_favorites_path(@post), method: :delete do %>
+        ♥<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_favorites_path(@post), method: :post do %>
+        ♡<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+    </span>
    </div>
   </div>
  </div>
