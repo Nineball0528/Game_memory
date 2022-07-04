@@ -10,7 +10,7 @@
      <p class="card-title">
        <strong><i class="far fa-flag"></i><span> <%= @post.title %></span></strong>
     </p>
-    <%= render 'tag_list', tag_list: @post.tag_list %>
+    <%= render 'public/post/tag_list', tag_list: @post.tag_list %>
     <span><i class="fas fa-user"></i> By <%= @post.user.name %></span>
     <span>
      <% if @post.favorited_by?(current_user) %>
@@ -29,8 +29,8 @@
     </span>
     <span>
      <% if @post.user == current_user %>
-  　   <%= link_to "編集", edit_post_path %>
-      <%= link_to "削除", post_path, method: :delete, data: { confirm: "本当に削除しますか？"} %>
+      <%= link_to "編集", edit_post_path(@post.id) %>
+      <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: "作品を削除しますか？"} %>
      <% end %>
     </span>
    </div>
@@ -46,7 +46,7 @@
       <div class = "d-flex">
        <p><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
        <% if post_comment.user == current_user %>
-       <%= link_to "コメント削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+       <%= link_to "コメント削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: "コメントを削除しますか？"} %>
        <% end %>
       </div>
      </div>
@@ -55,8 +55,18 @@
   </div>
   <div>
   <%= form_with model:[@post, @post_comment] do |f| %>
-    <%= f.text_area :comment, style: "width:100%" , rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
+  <% if @post_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @post_comment.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+        <% @post_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <%= f.text_area :comment, style: "width:100%" , rows: '5', placeholder: "コメントをここに" %>
+   <%= f.submit "送信する" %>
   <% end %>
   </div>
  </div>
