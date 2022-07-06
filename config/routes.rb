@@ -13,7 +13,6 @@ root to:'public/homes#top'
 
 scope module: :public do
 
-    get '/about' => "homes#about", as: 'about'
     get 'users/confirm' => "users#confirm"
     patch 'users/withdraw' => 'users#withdraw'
     resources :users, only: [:index, :show, :edit, :update] do
