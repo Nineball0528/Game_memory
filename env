@@ -1,4 +1,4 @@
-DB_USERNAME="Nineball"
-DB_PASSWORD="kuroku0528"
-DB_HOST="rds-mysql-server.c6xhw6mifbme.us-east-1.rds.amazonaws.com"
+DB_USERNAME="Nine"
+DB_PASSWORD="Kuroro0528"
+DB_HOST="rds-mysql-server.cjophiqlaols.ap-northeast-1.rds.amazonaws.com"
 DB_DATABASE="Game＿memory"
