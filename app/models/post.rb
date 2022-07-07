@@ -6,8 +6,6 @@ class Post < ApplicationRecord
 
   validates :image, presence: true
   validates :title, presence: true
-  validates :body, presence: true
-
 
 
   has_many :post_comments, dependent: :destroy

@@ -5,7 +5,10 @@ class AddMissingUniqueIndices < ActiveRecord::Migration[6.0]
   def self.up
     add_index ActsAsTaggableOn.tags_table, :name, unique: true
 
-    remove_index ActsAsTaggableOn.taggings_table, :tag_id if index_exists?(ActsAsTaggableOn.taggings_table, :tag_id)
+    if index_exists?(ActsAsTaggableOn.taggings_table, :tag_id)
+      remove_foreign_key ActsAsTaggableOn.taggings_table, ActsAsTaggableOn.tags_table
+      remove_index ActsAsTaggableOn.taggings_table, :tag_id
+    end
     remove_index ActsAsTaggableOn.taggings_table, name: 'taggings_taggable_context_idx'
     add_index ActsAsTaggableOn.taggings_table,
               %i[tag_id taggable_id taggable_type context tagger_id tagger_type],
@@ -16,6 +19,10 @@ class AddMissingUniqueIndices < ActiveRecord::Migration[6.0]
     remove_index ActsAsTaggableOn.tags_table, :name
 
     remove_index ActsAsTaggableOn.taggings_table, name: 'taggings_idx'
+
+    if not foreign_key_exists?(ActsAsTaggableOn.taggings_table, ActsAsTaggableOn.tags_table)
+      add_foreign_key ActsAsTaggableOn.taggings_table, ActsAsTaggableOn.tags_table
+    end
 
     add_index ActsAsTaggableOn.taggings_table, :tag_id unless index_exists?(ActsAsTaggableOn.taggings_table, :tag_id)
     add_index ActsAsTaggableOn.taggings_table, %i[taggable_id taggable_type context],
