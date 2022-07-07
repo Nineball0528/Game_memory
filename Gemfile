@@ -67,6 +67,14 @@ gem 'image_processing', '~> 1.2'
 gem 'kaminari','~> 1.2.1'
 
 gem 'dotenv-rails'
+
+group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'pry-byebug'
+  gem 'pry-rails'
+end
+
 group :production do
   gem 'mysql2'
 end
